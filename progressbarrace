@@ -1,0 +1,26 @@
+import PySimpleGUI as sg
+
+layout = [[sg.Text("Welcome to the races!")],
+          [sg.Text("You", justification="center")],
+          [sg.ProgressBar(orientation="horizontal", max_value=40, s=(40, 20), k="plyrp")],
+          [sg.Text("CPU", justification="center")],
+          [sg.ProgressBar(orientation="horizontal", max_value=40, s=(40, 20), k="cpup")],
+          [sg.Button("Roll Movements", enable_events=True, k="rpick")],
+          [sg.Multiline("Results", disabled=True, k="results")]]
+
+window = sg.Window("Progress Bar Racer", layout, finalize=True, use_default_focus=True)
+
+showing = True
+
+Choices = [2,2,2,2,2,4,4,4,4,4,6,6,6,6,8,8,8,10,10]
+ChoicesResponse = {2:"Got a 2, better luck next time", 4:"Got a 4, better than a 2", 6:"Got a 6, that's pretty good",
+                   8:"Got an 8, that's great", 10:"Got a 10, lucky for them"}
+
+while showing:
+    event, values = window.read()
+
+    if event == sg.WINDOW_CLOSED:
+        break
+
+    if event == "rpick":
+        
